@@ -73,7 +73,7 @@ const Navbar = () => {
             <a 
               key={link.name} 
               href={link.href}
-              className={`text-sm font-medium transition-colors hover:text-secondary ${
+              className={`text-base font-medium transition-colors hover:text-secondary ${
                 isScrolled ? 'text-gray-600' : 'text-white/90'
               }`}
             >
@@ -82,7 +82,7 @@ const Navbar = () => {
           ))}
           <a 
             href="#kontakt"
-            className="bg-secondary text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/20"
+            className="bg-secondary text-white px-5 py-2.5 rounded-lg font-semibold text-base hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/20"
           >
             Konzultace
           </a>
@@ -218,7 +218,7 @@ export default function App() {
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-primary/90 mix-blend-multiply z-10" />
           <img 
-            src="/images/hero_bg.png" 
+            src="./images/hero_bg.png" 
             alt="Safety background" 
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
@@ -291,7 +291,7 @@ export default function App() {
             >
               <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-8 border-white">
                 <img 
-                  src="/images/frantisek_ceparek.png" 
+                  src="./images/frantisek_ceparek.png" 
                   alt="Mgr. František Cepárek" 
                   className="w-full h-full object-cover aspect-square"
                   referrerPolicy="no-referrer"
@@ -496,116 +496,66 @@ export default function App() {
         </div>
       </section>
 
-      {/* --- FINAL CTA --- */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-primary/5 -z-10" />
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <motion.div
-             initial={{ opacity: 0, scale: 0.95 }}
-             whileInView={{ opacity: 1, scale: 1 }}
-             viewport={{ once: true }}
-             className="bg-white p-12 md:p-20 rounded-[40px] shadow-2xl border border-gray-100"
-          >
-            <h2 className="text-3xl md:text-5xl font-bold mb-8 text-gray-900 leading-tight">
-              Nechte BOZP na odborníkovi a soustřeďte se na své podnikání.
-            </h2>
-            <div className="flex flex-col sm:flex-row justify-center gap-6">
-              <a 
-                href="#kontakt" 
-                className="px-10 py-5 bg-secondary text-white rounded-xl font-bold text-xl hover:bg-orange-600 transition-all shadow-xl shadow-orange-500/30 flex items-center justify-center gap-3 group"
-              >
-                Domluvit konzultaci
-                <ChevronRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
-              </a>
-            </div>
-            <div className="mt-12 flex items-center justify-center gap-8 text-gray-500 font-medium">
-               <div className="flex items-center gap-2">
-                 <ShieldCheck className="w-5 h-5 text-secondary" />
-                 <span>Rychlá odezva</span>
-               </div>
-               <div className="flex items-center gap-2">
-                 <CheckCircle className="w-5 h-5 text-secondary" />
-                 <span>Bezplatná úvodní konzultace</span>
-               </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* --- CONTACT & FOOTER --- */}
       <footer id="kontakt" className="bg-gray-900 text-white pt-24 pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 mb-20">
-            <div>
-              <SectionHeading subtitle="Pojďme to probrat" light>Kontakt</SectionHeading>
-              
-              <div className="space-y-10 mt-12">
-                <div className="flex items-start gap-6">
-                  <div className="bg-white/10 p-4 rounded-xl border border-white/20">
-                    <Phone className="w-6 h-6 text-secondary" />
-                  </div>
-                  <div>
-                    <h5 className="text-white/60 text-sm font-bold uppercase tracking-widest mb-1">Telefon</h5>
-                    <p className="text-2xl font-bold">+420 123 456 789</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-6">
-                  <div className="bg-white/10 p-4 rounded-xl border border-white/20">
-                    <Mail className="w-6 h-6 text-secondary" />
-                  </div>
-                  <div>
-                    <h5 className="text-white/60 text-sm font-bold uppercase tracking-widest mb-1">E-mail</h5>
-                    <p className="text-2xl font-bold">info@bozp-ceparek.cz</p>
-                  </div>
-                </div>
-
-                <div className="bg-white/5 p-8 rounded-2xl border border-white/10 space-y-4">
-                  <h5 className="text-lg font-bold mb-4">Mgr. František Cepárek</h5>
-                  <p className="text-white/60 leading-tight">
-                    Odborně způsobilá osoba v prevenci rizik <br />
-                    dle zákona č. 309/2006 Sb.
-                  </p>
-                  <p className="text-white/60 text-sm">IČ: 12345678 (placeholder)</p>
-                </div>
+          <SectionHeading subtitle="Pojďme to probrat" light>Kontakt</SectionHeading>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20 max-w-5xl mx-auto">
+            {/* Telefon */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-white/5 p-8 rounded-2xl border border-white/10 flex flex-col items-center text-center space-y-4 hover:border-secondary/50 transition-colors"
+            >
+              <div className="bg-white/10 p-4 rounded-xl border border-white/20 text-secondary">
+                <Phone className="w-6 h-6" />
               </div>
-            </div>
+              <div>
+                <h5 className="text-white/60 text-xs font-bold uppercase tracking-widest mb-1">Telefon</h5>
+                <a href="tel:+420123456789" className="text-xl font-bold hover:text-secondary transition-colors block">
+                  +420 123 456 789
+                </a>
+              </div>
+            </motion.div>
 
-            <div className="bg-white rounded-3xl p-8 md:p-12 text-gray-900">
-               <h3 className="text-2xl font-bold mb-8">Napište mi</h3>
-               <form className="space-y-6">
-                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                       <label className="text-xs font-bold uppercase tracking-wider text-gray-500">Jméno</label>
-                       <input 
-                         type="text" 
-                         placeholder="Jan Novák"
-                         className="w-full bg-gray-50 border border-gray-200 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                       />
-                    </div>
-                    <div className="space-y-2">
-                       <label className="text-xs font-bold uppercase tracking-wider text-gray-500">E-mail</label>
-                       <input 
-                         type="email" 
-                         placeholder="jan.novak@firma.cz"
-                         className="w-full bg-gray-50 border border-gray-200 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
-                       />
-                    </div>
-                 </div>
-                 <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-wider text-gray-500">Zpráva</label>
-                    <textarea 
-                      rows={4} 
-                      placeholder="Jak vám mohu pomoci?"
-                      className="w-full bg-gray-50 border border-gray-200 rounded-xl px-5 py-3 focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all resize-none"
-                    />
-                 </div>
-                 <button className="w-full py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-all shadow-xl shadow-primary/20 flex items-center justify-center gap-3">
-                   Odeslat poptávku
-                   <ArrowRight className="w-5 h-5" />
-                 </button>
-               </form>
-            </div>
+            {/* E-mail */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="bg-white/5 p-8 rounded-2xl border border-white/10 flex flex-col items-center text-center space-y-4 hover:border-secondary/50 transition-colors"
+            >
+              <div className="bg-white/10 p-4 rounded-xl border border-white/20 text-secondary">
+                <Mail className="w-6 h-6" />
+              </div>
+              <div>
+                <h5 className="text-white/60 text-xs font-bold uppercase tracking-widest mb-1">E-mail</h5>
+                <a href="mailto:info@bozp-ceparek.cz" className="text-xl font-bold hover:text-secondary transition-colors block">
+                  info@bozp-ceparek.cz
+                </a>
+              </div>
+            </motion.div>
+
+            {/* Osobní údaje */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="bg-white/5 p-8 rounded-2xl border border-white/10 flex flex-col items-center text-center space-y-4 hover:border-secondary/50 transition-colors md:col-span-1"
+            >
+              <div className="bg-white/10 p-4 rounded-xl border border-white/20 text-secondary">
+                <Shield className="w-6 h-6" />
+              </div>
+              <div>
+                <h5 className="text-white/60 text-xs font-bold uppercase tracking-widest mb-1">OZO v prevenci rizik</h5>
+                <p className="font-bold text-base leading-snug">Mgr. František Cepárek</p>
+                <p className="text-white/40 text-xs mt-1">IČ: 12345678 (placeholder)</p>
+              </div>
+            </motion.div>
           </div>
 
           <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
