@@ -218,7 +218,7 @@ export default function App() {
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-primary/90 mix-blend-multiply z-10" />
           <img 
-            src="https://picsum.photos/seed/safety/1920/1080?grayscale" 
+            src="/images/hero_bg.png" 
             alt="Safety background" 
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
@@ -291,7 +291,7 @@ export default function App() {
             >
               <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-8 border-white">
                 <img 
-                  src="https://picsum.photos/seed/portrait/800/800" 
+                  src="/images/frantisek_ceparek.png" 
                   alt="Mgr. František Cepárek" 
                   className="w-full h-full object-cover aspect-square"
                   referrerPolicy="no-referrer"
@@ -378,8 +378,8 @@ export default function App() {
                 transition={{ delay: service.delay }}
                 className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl hover:-translate-y-1 transition-all group"
               >
-                <div className="mb-6 p-4 bg-primary/5 rounded-xl w-fit group-hover:bg-primary transition-colors">
-                  <div className="group-hover:text-white transition-colors">
+                <div className="mb-6 p-4 bg-primary/5 rounded-xl w-fit">
+                  <div>
                     {service.icon}
                   </div>
                 </div>
