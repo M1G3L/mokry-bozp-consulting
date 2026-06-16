@@ -59,7 +59,7 @@ const Navbar = () => {
           <Shield className={`w-8 h-8 ${isScrolled ? 'text-primary' : 'text-white'}`} />
           <div className="flex flex-col">
             <span className={`font-bold text-lg leading-none ${isScrolled ? 'text-gray-900' : 'text-white'}`}>
-              Mgr. František Cepárek
+              Mgr. Lubomír Mokrý
             </span>
             <span className={`text-[10px] uppercase tracking-wider ${isScrolled ? 'text-primary font-semibold' : 'text-white/80'}`}>
               Expert na BOZP
@@ -291,8 +291,8 @@ export default function App() {
             >
               <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-8 border-white">
                 <img 
-                  src="./images/frantisek_ceparek.png" 
-                  alt="Mgr. František Cepárek" 
+                  src="./images/frantisek_ceparek.jpg" 
+                  alt="Mgr. Lubomír Mokrý" 
                   className="w-full h-full object-cover aspect-square"
                   referrerPolicy="no-referrer"
                 />
@@ -323,7 +323,7 @@ export default function App() {
                 className="space-y-6 text-gray-600 leading-relaxed text-lg"
               >
                 <p>
-                  Jmenuji se <span className="font-bold text-gray-900">Mgr. František Cepárek</span> a působím jako odborník v oblasti bezpečnosti a ochrany zdraví při práci.
+                  Jmenuji se <span className="font-bold text-gray-900">Mgr. Lubomír Mokrý</span> a působím jako odborník v oblasti bezpečnosti a ochrany zdraví při práci.
                 </p>
                 <p className="bg-primary/5 p-4 border-l-4 border-primary rounded-r-lg italic">
                   Jsem odborně způsobilá osoba v prevenci rizik dle zákona č. 309/2006 Sb.
@@ -514,8 +514,8 @@ export default function App() {
               </div>
               <div>
                 <h5 className="text-white/60 text-xs font-bold uppercase tracking-widest mb-1">Telefon</h5>
-                <a href="tel:+420123456789" className="text-xl font-bold hover:text-secondary transition-colors block">
-                  +420 123 456 789
+                <a href="tel:+420731285196" className="text-xl font-bold hover:text-secondary transition-colors block">
+                  +420 731 285 196
                 </a>
               </div>
             </motion.div>
@@ -533,8 +533,8 @@ export default function App() {
               </div>
               <div>
                 <h5 className="text-white/60 text-xs font-bold uppercase tracking-widest mb-1">E-mail</h5>
-                <a href="mailto:info@bozp-ceparek.cz" className="text-xl font-bold hover:text-secondary transition-colors block">
-                  info@bozp-ceparek.cz
+                <a href="mailto:lubomokry@seznam.cz" className="text-xl font-bold hover:text-secondary transition-colors block">
+                  lubomokry@seznam.cz
                 </a>
               </div>
             </motion.div>
@@ -552,8 +552,8 @@ export default function App() {
               </div>
               <div>
                 <h5 className="text-white/60 text-xs font-bold uppercase tracking-widest mb-1">OZO v prevenci rizik</h5>
-                <p className="font-bold text-base leading-snug">Mgr. František Cepárek</p>
-                <p className="text-white/40 text-xs mt-1">IČ: 12345678 (placeholder)</p>
+                <p className="font-bold text-base leading-snug">Mgr. Lubomír Mokrý</p>
+                <p className="text-white/40 text-xs mt-1">IČ: 08455953</p>
               </div>
             </motion.div>
           </div>
@@ -561,10 +561,10 @@ export default function App() {
           <div className="pt-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex items-center gap-2">
               <Shield className="w-6 h-6 text-secondary" />
-              <span className="font-bold">BOZP CEPAREK</span>
+              <span className="font-bold">BOZP MOKRÝ</span>
             </div>
             <p className="text-white/40 text-sm text-center md:text-left">
-              © {new Date().getFullYear()} Mgr. František Cepárek. Všechna práva vyhrazena. 
+              © {new Date().getFullYear()} Mgr. Lubomír Mokrý. Všechna práva vyhrazena. 
               <span className="mx-2">|</span> 
               Design & vývoj 2026
             </p>
