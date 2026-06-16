@@ -13,7 +13,7 @@ Tato složka slouží pro ukládání všech statických obrázků prezentace (n
 Všechny soubory umístěné v této složce jsou serverem Vite dostupné přímo z kořenové adresy webu. To znamená, že nemusíte zadávat cestu `/public/`.
 
 Příklady použití:
-- Pro portrétní fotku: `<img src="/images/autor.jpg" alt="Mgr. František Cepárek" />`
+- Pro portrétní fotku: `<img src="/images/autor.jpg" alt="Mgr. Lubomír Mokrý" />`
 - Pro pozadí v Hero sekci: `backgroundImage: "url('/images/hero-bg.jpg')"`
 
 ---
