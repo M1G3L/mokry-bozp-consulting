@@ -19,6 +19,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: github-pages
     env:
       NODE_OPTIONS: --no-deprecation
     steps:
