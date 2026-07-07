@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, type MouseEvent } from 'react';
 import { 
   Shield, 
   Users, 
@@ -48,6 +48,25 @@ const Navbar = () => {
     { name: 'Kontakt', href: '#kontakt' },
   ];
 
+  const handleNavClick = (event: MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (!href.startsWith('#')) {
+      return;
+    }
+
+    event.preventDefault();
+    const targetId = href.slice(1);
+    const target = document.getElementById(targetId);
+
+    if (target) {
+      const offset = 96;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+
+    window.history.pushState(null, '', href);
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <nav 
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
@@ -76,6 +95,7 @@ const Navbar = () => {
               <a 
                 key={link.name} 
                 href={link.href}
+                onClick={(event) => handleNavClick(event, link.href)}
                 className={`text-base font-medium transition-colors ${
                   isContactLink
                     ? 'bg-secondary text-white px-5 py-2.5 rounded-lg font-semibold shadow-lg shadow-orange-500/20 hover:bg-orange-600 hover:text-white/90'
@@ -118,7 +138,7 @@ const Navbar = () => {
                   <a 
                     key={link.name}  
                     href={link.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
+                    onClick={(event) => handleNavClick(event, link.href)}
                     className={`text-lg font-medium ${
                       isContactLink
                         ? 'bg-secondary text-white px-5 py-3 rounded-lg font-bold text-center'
