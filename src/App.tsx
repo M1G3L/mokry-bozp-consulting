@@ -55,7 +55,7 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        <div className="flex items-center gap-2">
+        <a href="#home" className="flex items-center gap-2">
           <Shield className={`w-8 h-8 ${isScrolled ? 'text-primary' : 'text-white'}`} />
           <div className="flex flex-col">
             <span className={`font-bold text-lg leading-none ${isScrolled ? 'text-gray-900' : 'text-white'}`}>
@@ -65,27 +65,27 @@ const Navbar = () => {
               Expert na BOZP
             </span>
           </div>
-        </div>
+        </a>
 
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a 
-              key={link.name} 
-              href={link.href}
-              className={`text-base font-medium transition-colors hover:text-secondary ${
-                isScrolled ? 'text-gray-600' : 'text-white/90'
-              }`}
-            >
-              {link.name}
-            </a>
-          ))}
-          <a 
-            href="#kontakt"
-            className="bg-secondary text-white px-5 py-2.5 rounded-lg font-semibold text-base hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/20"
-          >
-            Konzultace
-          </a>
+          {navLinks.map((link) => {
+            const isContactLink = link.name === 'Kontakt';
+
+            return (
+              <a 
+                key={link.name} 
+                href={link.href}
+                className={`text-base font-medium transition-colors ${
+                  isContactLink
+                    ? 'bg-secondary text-white px-5 py-2.5 rounded-lg font-semibold shadow-lg shadow-orange-500/20 hover:bg-orange-600 hover:text-white/90'
+                    : isScrolled ? 'text-gray-600 hover:text-secondary' : 'text-white/90 hover:text-secondary'
+                }`}
+              >
+                {link.name}
+              </a>
+            );
+          })}
         </div>
 
         {/* Mobile Toggle */}
@@ -111,23 +111,24 @@ const Navbar = () => {
             className="md:hidden bg-white border-b overflow-hidden"
           >
             <div className="px-4 py-6 flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <a 
-                  key={link.name} 
-                  href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-gray-700 text-lg font-medium"
-                >
-                  {link.name}
-                </a>
-              ))}
-              <a 
-                href="#kontakt"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="bg-secondary text-white px-5 py-3 rounded-lg font-bold text-center"
-              >
-                Nezávazná konzultace
-              </a>
+              {navLinks.map((link) => {
+                const isContactLink = link.name === 'Kontakt';
+
+                return (
+                  <a 
+                    key={link.name}  
+                    href={link.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`text-lg font-medium ${
+                      isContactLink
+                        ? 'bg-secondary text-white px-5 py-3 rounded-lg font-bold text-center'
+                        : 'text-gray-700'
+                    }`}
+                  >
+                    {link.name}
+                  </a>
+                );
+              })}
             </div>
           </motion.div>
         )}
@@ -213,7 +214,7 @@ export default function App() {
       <Navbar />
 
       {/* --- HERO SECTION --- */}
-      <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+      <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
         {/* Background Background */}
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-primary/90 mix-blend-multiply z-10" />
