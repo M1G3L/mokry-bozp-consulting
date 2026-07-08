@@ -177,6 +177,51 @@ const SectionHeading = ({ children, subtitle, light = false }: { children: React
 );
 
 export default function App() {
+  const [cookieConsent, setCookieConsent] = useState<boolean | null>(null);
+
+  const loadGoogleAnalytics = () => {
+    if (typeof window === 'undefined') return;
+    const win = window as any;
+    if (win.gtag) return;
+
+    const gaScript = document.createElement('script');
+    gaScript.async = true;
+    gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-BXCZ6YVQJW';
+    document.head.appendChild(gaScript);
+
+    const inlineScript = document.createElement('script');
+    inlineScript.innerHTML = `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-BXCZ6YVQJW', { anonymize_ip: true });`;
+    document.head.appendChild(inlineScript);
+  };
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const stored = window.localStorage.getItem('cookieConsent');
+    if (stored === 'accepted') {
+      setCookieConsent(true);
+    } else if (stored === 'declined') {
+      setCookieConsent(false);
+    } else {
+      setCookieConsent(null);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (cookieConsent) {
+      loadGoogleAnalytics();
+    }
+  }, [cookieConsent]);
+
+  const handleCookieAccept = () => {
+    window.localStorage.setItem('cookieConsent', 'accepted');
+    setCookieConsent(true);
+  };
+
+  const handleCookieDecline = () => {
+    window.localStorage.setItem('cookieConsent', 'declined');
+    setCookieConsent(false);
+  };
+
   const services = [
     {
       title: 'Prevence rizik (BOZP)',
@@ -220,6 +265,30 @@ export default function App() {
   return (
     <div className="min-h-screen bg-white font-sans text-gray-900 overflow-x-hidden">
       <Navbar />
+
+      {cookieConsent === null && (
+        <div className="fixed bottom-4 left-1/2 z-50 w-[calc(100%-2rem)] max-w-3xl -translate-x-1/2 rounded-3xl border border-gray-200 bg-white/95 p-5 shadow-2xl shadow-black/10 backdrop-blur-xl text-sm md:text-base">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <p className="text-gray-800">
+              Používáme cookies pro analýzu návštěvnosti. Souhlasíš s jejich použitím?
+            </p>
+            <div className="flex flex-wrap gap-2 justify-end">
+              <button
+                onClick={handleCookieDecline}
+                className="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-gray-700 transition hover:bg-gray-50"
+              >
+                Ne
+              </button>
+              <button
+                onClick={handleCookieAccept}
+                className="rounded-md bg-secondary px-4 py-2 text-sm font-semibold text-white transition hover:bg-orange-600"
+              >
+                Ano
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* --- HERO SECTION --- */}
       <section id="home" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
