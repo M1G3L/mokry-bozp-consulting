@@ -1,20 +1,25 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
-
-# Run and deploy your AI Studio app
-
-This contains everything you need to run your app locally.
-
-View your app in AI Studio: https://ai.studio/apps/8eef8481-c9de-434e-91b3-71203308b2da
-
-## Run Locally
-
 **Prerequisites:**  Node.js
-
 
 1. Install dependencies:
    `npm install`
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
 3. Run the app:
    `npm run dev`
+
+## Deployment with GitHub Actions and GitHub Pages
+
+This project includes a GitHub Actions workflow at `.github/workflows/deploy.yml` which builds the app and deploys the generated `dist` folder to GitHub Pages.
+
+Deployment flow:
+1. Push your changes to `dev`.
+2. Create a pull request from `dev` into `main`.
+3. After the PR is merged, the workflow runs on `main` and deploys to GitHub Pages.
+
+The workflow automatically:
+   - checks out the repo
+   - installs dependencies
+   - builds the app with `npm run build`
+   - uploads `dist` as the Pages artifact
+   - deploys the site to GitHub Pages
+
+If you need to change the deployment branch, update the `branches:` section in `.github/workflows/deploy.yml` and configure Pages in repository settings accordingly.
