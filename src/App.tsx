@@ -297,7 +297,7 @@ export default function App() {
           <div className="absolute inset-0 bg-primary/90 mix-blend-multiply z-10" />
           <img 
             src="./images/hero_bg.png" 
-            alt="Safety background" 
+            alt="BOZP bezpečnostní konzultace a školení" 
             className="w-full h-full object-cover"
             referrerPolicy="no-referrer"
           />
